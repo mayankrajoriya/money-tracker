@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-mongoose.connect('mongodb://localhost:27017/MoneyList')
+const DATABASE_URL = "mongodb+srv://mayank601665:mayank601665@cluster0.dxrbe.mongodb.net/money-tracker?retryWrites=true&w=majority&appName=Cluster0";
+mongoose.connect(DATABASE_URL,{ useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection
 db.on('error', ()=> console.log("Error in connecting to the Database"))
 db.once('open', () => console.log("Connected to Database"))
